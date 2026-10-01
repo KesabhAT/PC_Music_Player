@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="594mm"
+   height="420mm"
+   viewBox="0 0 594 420"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   sodipodi:docname="plan.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="0.25"
+     inkscape:cx="1164"
+     inkscape:cy="806"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1920"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999998"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect6"
+       is_visible="true"
+       lpeversion="1.3"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       uniform="false" />
+  </defs>
+  <g
+     inkscape:label="Base"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke-width:2;stroke:#ff80b2;stroke-dasharray:none;stroke-linejoin:round"
+       id="rect1"
+       width="470.00003"
+       height="239.99998"
+       x="39.999977"
+       y="30.00001"
+       inkscape:label="Background" />
+    <rect
+       style="fill:#ffffff;stroke:#0044aa;stroke-width:2;stroke-dasharray:none;paint-order:markers fill stroke"
+       id="rect2-3-1"
+       width="92.90593"
+       height="90.000008"
+       x="327.09406"
+       y="80.000008"
+       inkscape:label="Next_Track" />
+    <rect
+       style="fill:#ffffff;stroke:#0044aa;stroke-width:2;stroke-dasharray:none;paint-order:markers fill stroke"
+       id="rect2-3"
+       width="89.999992"
+       height="90.000008"
+       x="140"
+       y="80"
+       inkscape:label="Prev_Track" />
+    <rect
+       style="fill:#ffffff;stroke:#0044aa;stroke-width:2;stroke-dasharray:none;paint-order:markers fill stroke"
+       id="rect2"
+       width="139.99998"
+       height="140"
+       x="210"
+       y="50"
+       inkscape:label="Current_Track" />
+    <g
+       id="g8"
+       inkscape:label="Btn_Play_Pause">
+      <ellipse
+         style="fill:none;stroke:#00aa44;stroke-width:2;stroke-dasharray:none;paint-order:normal"
+         id="path4"
+         cx="280"
+         cy="240"
+         rx="19.999998"
+         ry="20"
+         inkscape:label="Btn" />
+      <path
+         sodipodi:type="star"
+         style="fill:#ffffff;stroke:#00aa44;stroke-width:1.86121164;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="path8"
+         inkscape:flatsided="true"
+         sodipodi:sides="3"
+         sodipodi:cx="145"
+         sodipodi:cy="315"
+         sodipodi:r1="10"
+         sodipodi:r2="5"
+         sodipodi:arg1="3.1415927"
+         sodipodi:arg2="4.1887902"
+         inkscape:rounded="-3.469447e-18"
+         inkscape:randomized="2.7755576e-17"
+         d="m 135,315 15,-8.66025 0,17.3205 z"
+         inkscape:transform-center-x="-2.5"
+         transform="matrix(-0.9999998,0,0,1.1546984,424.99997,-123.73)"
+         inkscape:transform-center-y="4.3837047e-06"
+         inkscape:label="Play" />
+    </g>
+    <g
+       id="g9"
+       inkscape:label="Btn_Next">
+      <path
+         id="path9-1"
+         style="fill:#ffffff;stroke:#00aa44;stroke-width:1.39348;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         inkscape:transform-center-x="-1.7768663"
+         d="m 329.99999,233.71823 10.66137,5.91488 -10.66137,5.9154 v -5.5485 l -9.9999,5.5485 v -11.83028 l 9.9999,5.54798 z"
+         sodipodi:nodetypes="cccccccc"
+         inkscape:label="Next" />
+      <circle
+         style="fill:none;stroke:#00aa44;stroke-width:2;stroke-dasharray:none;paint-order:markers fill stroke"
+         id="path5"
+         cx="330"
+         cy="240"
+         r="15"
+         inkscape:label="Btn" />
+    </g>
+    <g
+       id="g10"
+       inkscape:label="Btn_Prev">
+      <path
+         id="path9"
+         style="fill:#ffffff;stroke:#00aa44;stroke-width:1.39348;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         inkscape:transform-center-x="1.7768637"
+         d="m 229.99999,234.45202 -10.66136,5.91489 10.66136,5.9154 v -5.5485 l 9.99991,5.5485 v -11.83029 l -9.99991,5.54799 z"
+         sodipodi:nodetypes="cccccccc"
+         inkscape:label="Prev" />
+      <circle
+         style="fill:none;stroke:#00aa44;stroke-width:2;stroke-dasharray:none;paint-order:markers fill stroke"
+         id="path5-6"
+         cx="229.99998"
+         cy="240"
+         r="15"
+         inkscape:label="Btn" />
+    </g>
+    <g
+       id="g7"
+       inkscape:label="Seek">
+      <path
+         style="fill:#00aa44;stroke:#00aa44;stroke-width:2;stroke-dasharray:none;paint-order:normal"
+         d="m 139.99999,210 c 0,0 270.00001,0 270.00001,0"
+         id="path6"
+         inkscape:path-effect="#path-effect6"
+         inkscape:original-d="M 139.99999,210 H 410"
+         inkscape:label="Seek Line" />
+      <ellipse
+         style="fill:#ffffff;stroke:#00aa44;stroke-width:2;stroke-linejoin:round;stroke-dasharray:none;paint-order:normal;stroke-opacity:1"
+         id="path7"
+         cx="150"
+         cy="210"
+         rx="4.9999995"
+         ry="5"
+         inkscape:label="Seek_Handle" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:19.05px;line-height:0;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono Bold';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;stroke:#00aa44;stroke-width:0.8;stroke-linejoin:round;stroke-dasharray:none"
+       x="269.44653"
+       y="25.306654"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.05px;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';fill:#000000;stroke:#000000;stroke-width:0.8;stroke-dasharray:none"
+         x="269.44653"
+         y="25.306654">PC Music Player</tspan></text>
+  </g>
+</svg>
