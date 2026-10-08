@@ -1,6 +1,8 @@
 using System;
+using System.Diagnostics;
 using System.Formats.Asn1;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading;
 using NAudio.SoundFile;
 using NAudio.Wave;
@@ -16,7 +18,9 @@ public class AudioService : IAudioService
 
     public void StopAudio()
     {
+        outputDevice?.PlaybackStopped -= OnPlaybackStopped; //the outputDevice.PlaybackStopped event were not occuring in the same thread
         outputDevice?.Stop();
+        DisposeAudioAndFile();
     }
 
     public string PlayPauseAudio()
@@ -44,9 +48,14 @@ public class AudioService : IAudioService
         _lock.EnterWriteLock();
         try
         {
+            Debug.Write("Playing Audio...");
             if (outputDevice?.PlaybackState == PlaybackState.Playing || outputDevice?.PlaybackState == PlaybackState.Paused)
             {
-                outputDevice.Stop(); //the outputDevice.PlaybackStopped event occurs in this same thread
+                Debug.Write("Stopping Audio");
+                outputDevice.PlaybackStopped -= OnPlaybackStopped; //the outputDevice.PlaybackStopped event were not occuring in the same thread
+                outputDevice.Stop();
+                DisposeAudioAndFile();
+                Debug.WriteLine("Audio was stopped");
             }
 
             var extension = Path.GetExtension(AudioFilePath).ToLower();
@@ -69,17 +78,32 @@ public class AudioService : IAudioService
             }
             else if (extension == ".aac" || extension == ".m4a" || extension == ".wma")
             {
-                Console.WriteLine("Thes file extension is not supported on linux");
-                return "00:00";
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Debug.WriteLine("Thes file extension is not supported on linux");
+                    return "00:00";
+                }
+                audioFile = new MediaFoundationReader(AudioFilePath);
             }
             else
             {
-                Console.WriteLine("This file extension is not supported");
+                Debug.WriteLine("This file extension is not supported");
                 return "00:00";
             }
 
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                outputDevice = new WasapiPlayerBuilder().Build();
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                outputDevice = new AlsaOut();
+            }
+            else
+            {
+                throw new PlatformNotSupportedException("The current operating system is not supported for audio playback.");
+            }
 
-            outputDevice = new AlsaOut();
             outputDevice.PlaybackStopped += OnPlaybackStopped;
             outputDevice.Init(audioFile);
 
@@ -88,6 +112,7 @@ public class AudioService : IAudioService
                                     audioFile.TotalTime.Seconds.ToString("00");
 
             outputDevice.Play();
+            Debug.WriteLine("Audio was Played");
             return totalTime;
 
         }
@@ -109,8 +134,11 @@ public class AudioService : IAudioService
                 var currentTime = audioFile.CurrentTime.Hours > 0 ? audioFile.CurrentTime.Hours + ":" : "" +
                                     audioFile.CurrentTime.Minutes.ToString("00") + ":" +
                                     audioFile.CurrentTime.Seconds.ToString("00");
+                //Debug.WriteLine($"{audioFile.Position *100/audioFile.Length} ,{currentTime}");
                 return (position, currentTime, "");
             }
+
+            //Debug.WriteLine($"Output Device was null");
             return (-1, "", "");
         }
         finally
@@ -126,7 +154,7 @@ public class AudioService : IAudioService
         try
         {
             if (outputDevice != null && audioFile != null &&
-            (outputDevice.PlaybackState == PlaybackState.Playing || outputDevice?.PlaybackState == PlaybackState.Paused))
+            (outputDevice.PlaybackState == PlaybackState.Playing || outputDevice.PlaybackState == PlaybackState.Paused))
             {
                 audioFile.Position = Position * audioFile.Length/100;
                 var currentTime = audioFile.CurrentTime.Hours > 0 ? audioFile.CurrentTime.Hours + ":" : "" +
@@ -141,13 +169,20 @@ public class AudioService : IAudioService
             _lock.ExitWriteLock();
         }
     }
-    
+
     private void OnPlaybackStopped(object? sender, StoppedEventArgs args)
     {
+        DisposeAudioAndFile();
+    }
+
+    private void DisposeAudioAndFile()
+    {
+        Debug.Write("Disposing Audio...");
         outputDevice?.Dispose();
         outputDevice = null;
         audioFile?.Dispose();
         audioFile = null;
+        Debug.WriteLine("Audio was disposed");
     }
 
 }

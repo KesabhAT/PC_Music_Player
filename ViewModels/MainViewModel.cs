@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
@@ -185,7 +186,7 @@ public partial class MainViewModel : ViewModelBase
             else
             {
                 CurrentAudioTime = currentTime;
-                if (IsSeekSliderHeld)
+                if (!IsSeekSliderHeld)
                 {
                     #pragma warning disable MVVMTK0034
                     //Setting the value of the slider via SetProperty so that the Seek Position moves but the OnAudioSeekPositionChanged Event is not triggered
@@ -205,7 +206,7 @@ public partial class MainViewModel : ViewModelBase
     }
 
     //This is set to true when user is holding the Audio Seek Slider with the pointer
-    public bool IsSeekSliderHeld;
+    public bool IsSeekSliderHeld=false;
     partial void OnAudioSeekPositionChanged(double oldValue, double newValue)
     {
         var (newPosition, currentTime, remainingTime) = _audioService.SetSeekData((long)newValue);

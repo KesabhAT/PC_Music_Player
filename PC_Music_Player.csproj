@@ -30,4 +30,12 @@
     <PackageReference Include="NAudio.Wasapi" Version="3.1.0" />
     <PackageReference Include="NLayer.NAudioSupport" Version="3.0.0" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Content Include="libsndfile_binaries\*">
+			<Link>%(Filename)%(Extension)</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<Visible>false</Visible>
+		</Content>
+	</ItemGroup>
 </Project>

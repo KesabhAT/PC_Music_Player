@@ -23,11 +23,10 @@ sealed class Program
             .UsePlatformDetect()
             .With(new X11PlatformOptions
             {
-               UseDBusFilePicker=false 
+                UseDBusFilePicker = false
             })
 #if DEBUG
             .WithDeveloperTools()
 #endif
-            .WithInterFont()
-            .LogToTrace();
+            .WithInterFont();
 }
