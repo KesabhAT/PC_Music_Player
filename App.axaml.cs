@@ -22,17 +22,22 @@ public partial class App : Application
         {
             var services = new ServiceCollection();
             services.AddSingleton<MainWindow>();
+            services.AddSingleton<MainWindow2>();
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<IFilePickerService, FilePickerService>();
             services.AddSingleton<IAudioService, AudioService>();
 
             //Instructing the dependency Injection container to provide the MainWindow instance everytime a Window instance is required by a class, here FilePickerService requires Window  
-            services.AddSingleton<Window>(sp => sp.GetRequiredService<MainWindow>());
+            services.AddSingleton<Window>(sp => sp.GetRequiredService<MainWindow2>());
 
             var provider = services.BuildServiceProvider();
             var window = provider.GetRequiredService<MainWindow>();
             window.DataContext = provider.GetRequiredService<MainViewModel>();
-            desktop.MainWindow = window;
+
+            var window2 = provider.GetRequiredService<MainWindow2>();
+            window2.DataContext = provider.GetRequiredService<MainViewModel>();
+
+            desktop.MainWindow = window2;
 
         }
 

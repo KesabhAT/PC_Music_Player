@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PC_Music_Player.Views.MainWindow2"
+        xmlns:vm="using:PC_Music_Player.ViewModels"
+        x:DataType="vm:MainViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="PC Music Player 2"
+        Width="500"
+        Height="300"
+        WindowStartupLocation="CenterScreen">
+        <StackPanel Orientation="Vertical">
+          <Panel Height="20"></Panel>
+          <Button Command="{Binding AddAudioCommand}" HorizontalAlignment="Center" VerticalAlignment="Center"> Add Audio </Button>
+          <ScrollViewer Name="Playlist_Panel">
+            <ItemsControl ItemsSource="{Binding AudioViewModels}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <StackPanel Orientation="Vertical" Margin="10 0"> </StackPanel>
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:AudioViewModel">
+                  <Border BorderBrush="Black" BorderThickness="2" Background="{Binding Background}">
+                    <StackPanel Orientation="Horizontal"> 
+                      <Button Command="{Binding PlayCommand}" Content=" ▶️ " Padding="0"></Button>
+                      <Label Content="{Binding Label}"></Label>
+                      <Button Command="{Binding RemoveCommand}" Content="❌" Padding="0"></Button>
+                    </StackPanel>
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </ScrollViewer>
+          <Grid ColumnDefinitions="*, 70, 75" RowDefinitions="Auto">
+              <Slider Name="SeekSlider" Margin="20,0,0,-5" Grid.Row="0" Grid.Column="0" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding AudioSeekPosition, Mode=TwoWay, Delay=100}" />
+              <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Content="{Binding CurrentAudioTime}"></Label>
+              <Label VerticalAlignment="Center" Grid.Row="0" Grid.Column="2" Content="{Binding TotalAudioTime}"></Label>
+          </Grid>
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Command="{Binding PreviousCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Content="⏮️"></Button>
+            <Button Command="{Binding PlayPauseCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Content="⏯️"></Button>
+            <Button Command="{Binding StopCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Content="⏹️"></Button>
+            <Button Command="{Binding NextCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Content="⏭️"></Button>
+          </StackPanel>
+        </StackPanel>
+</Window>
